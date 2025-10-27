@@ -26,21 +26,24 @@ const Footer = () => {
           {/* Social Icons */}
           <div className="flex items-center gap-4 mt-6">
             {[
-              assets.instagramIcon,
-              assets.facebookIcon,
-              assets.twitterIcon,
-              assets.linkendinIcon,
-            ].map((icon, idx) => (
-              <button
+              { icon: assets.instagramIcon, link: "https://instagram.com" },
+              { icon: assets.facebookIcon, link: "https://facebook.com" },
+              { icon: assets.twitterIcon, link: "https://twitter.com" },
+              { icon: assets.linkendinIcon, link: "https://linkedin.com" },
+            ].map((item, idx) => (
+              <a
                 key={idx}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2.5 rounded-full hover:bg-white hover:scale-110 transition-all duration-300 shadow-md"
               >
                 <img
-                  src={icon}
+                  src={item.icon}
                   alt="social icon"
                   className="w-6 h-6 invert bg-black rounded"
                 />
-              </button>
+              </a>
             ))}
           </div>
         </div>
@@ -49,13 +52,19 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold text-white mb-3">Company</h3>
           <ul className="flex flex-col gap-2 text-sm text-white/90">
-            {["About", "Careers", "Press", "Blog", "Partners"].map((item) => (
-              <li key={item}>
+            {[
+              { name: "About", link: "/about" },
+              { name: "Careers", link: "/careers" },
+              { name: "Press", link: "/press" },
+              { name: "Blog", link: "/blog" },
+              { name: "Partners", link: "/partners" },
+            ].map((item) => (
+              <li key={item.name}>
                 <a
-                  href="#"
+                  href={item.link}
                   className="hover:text-amber-300 transition-all duration-200"
                 >
-                  {item}
+                  {item.name}
                 </a>
               </li>
             ))}
@@ -67,18 +76,18 @@ const Footer = () => {
           <h3 className="text-lg font-semibold text-white mb-3">Support</h3>
           <ul className="flex flex-col gap-2 text-sm text-white/90">
             {[
-              "Help Center",
-              "Safety Information",
-              "Cancellation Options",
-              "Contact Us",
-              "Accessibility",
+              { name: "Help Center", link: "/help" },
+              { name: "Safety Information", link: "/safety" },
+              { name: "Cancellation Options", link: "/cancellation" },
+              { name: "Contact Us", link: "/contact" },
+              { name: "Accessibility", link: "/accessibility" },
             ].map((item) => (
-              <li key={item}>
+              <li key={item.name}>
                 <a
-                  href="#"
+                  href={item.link}
                   className="hover:text-amber-300 transition-all duration-200"
                 >
-                  {item}
+                  {item.name}
                 </a>
               </li>
             ))}
@@ -101,7 +110,10 @@ const Footer = () => {
               placeholder="Enter your email"
               className="w-full px-3 py-2 bg-white/15 text-white placeholder:text-white/70 border border-white/30 rounded-l-lg focus:ring-2 focus:ring-amber-300 outline-none transition-all"
             />
-            <button className="flex items-center justify-center bg-amber-400 hover:bg-amber-300 text-black h-10 w-10 rounded-r-lg transition-all active:scale-95">
+            <button
+              type="button"
+              className="flex items-center justify-center bg-amber-400 hover:bg-amber-300 text-black h-10 w-10 rounded-r-lg transition-all active:scale-95"
+            >
               <svg
                 className="w-4 h-4"
                 xmlns="http://www.w3.org/2000/svg"
@@ -128,20 +140,27 @@ const Footer = () => {
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-3 py-6 text-sm text-white/80">
         <p>
           © {new Date().getFullYear()}{" "}
-          <a className="hover:text-amber-300 transition-colors duration-300">
+          <a
+            href="/"
+            className="hover:text-amber-300 transition-colors duration-300"
+          >
             QuickStay
           </a>{" "}
           — All Rights Reserved.
         </p>
 
         <ul className="flex items-center gap-5">
-          {["Privacy", "Terms", "Sitemap"].map((link) => (
-            <li key={link}>
+          {[
+            { name: "Privacy", link: "/privacy" },
+            { name: "Terms", link: "/terms" },
+            { name: "Sitemap", link: "/sitemap" },
+          ].map((item) => (
+            <li key={item.name}>
               <a
-                href="#"
+                href={item.link}
                 className="hover:text-amber-300 transition-all duration-300"
               >
-                {link}
+                {item.name}
               </a>
             </li>
           ))}
